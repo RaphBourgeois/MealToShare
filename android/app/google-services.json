@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "87195366279",
+    "firebase_url": "https://mealtoshare.firebaseio.com",
+    "project_id": "mealtoshare",
+    "storage_bucket": "mealtoshare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87195366279:android:b177873c5b357b93",
+        "android_client_info": {
+          "package_name": "MealToShare.Test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87195366279-40nuojvniqde492l70amsse6bp30murl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1huqqnuLclNvGkLXztjO_oSEl64q9MZ0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
