@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/firebaseAPI.dart';
 
 
 class Account extends StatefulWidget {
   Account({Key key, this.title}) : super(key: key);
   final String title;
-
+  
   @override
   _AccountState createState() => new _AccountState();
 }
 
 class _AccountState extends State<Account> {
   LocalData localData = new LocalData();
-
+  String _name = "";
   Connect connection = new Connect();
-  
+
+  _AccountState() {
+    print("Account first print");
+    if(_name == ""){
+    localData.getUserPref("name").then(
+      (val) => setState(() {
+          _name = val +"was here";
+
+        })
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context){
-    String userName = Connect().getUserName();//localData.getUserPref('name');
-
 
     return new Column(//page
       children: <Widget>[
@@ -27,7 +39,20 @@ class _AccountState extends State<Account> {
             new Expanded(
               child: new FittedBox(
                 fit: BoxFit.contain, // otherwise the logo will be tiny
-                child: new Icon(Icons.account_circle, color:Colors.grey),
+                child: new Container(
+                  padding: new EdgeInsets.all(50.0),
+                  decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                fit: BoxFit.fitWidth,
+                alignment: FractionalOffset.topCenter,
+                image: new NetworkImage('https://lh3.googleusercontent.com/-kMzSW0CaVXU/AAAAAAAAAAI/AAAAAAAAAAA/APUIFaPEOnYS6q6Lobpiw7uKowhRyWadsg/s96-c/photo.jpg'),
+              ),
+                    borderRadius: new BorderRadius.circular(250.0),
+                    border: null,
+                    color: Colors.blueAccent,
+                    ),
+                    child:null
+                  )
                 )
               ),
             new Expanded(
@@ -36,7 +61,7 @@ class _AccountState extends State<Account> {
                   new TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: userName
+                      hintText: _name
                     ),
                   ),
                   new Form(
@@ -77,7 +102,7 @@ class _AccountState extends State<Account> {
                 elevation: 4.0,
                 splashColor: Colors.blueGrey,
                 onPressed: () {
-                  connection.addRestriction("Banana");
+                  //connection.addRestriction("Banana");
                 },
               ),
               new RaisedButton(
@@ -86,7 +111,7 @@ class _AccountState extends State<Account> {
                 elevation: 4.0,
                 splashColor: Colors.blueGrey,
                 onPressed: () {
-                  connection.addRestriction("Banana");
+                  //connection.addRestriction("Banana");
                 },
               ),
             ],

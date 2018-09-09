@@ -9,12 +9,19 @@ class LocalData{
    setUserPref(String key, String name) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, name);
+    print('set LocalData: ' + key+':'+name);
   }
-  getUserPref(String name) async {
+
+  Future<String> getUserPref(String name) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getString(name);
+    return prefs.getString(name);
+  }
+  Future<SharedPreferences> getPref() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs;
   }
 }
+
 
 class Connect{
   final DocumentReference documentReference = Firestore.instance.document("mealtoshare.demo/restrictions");
