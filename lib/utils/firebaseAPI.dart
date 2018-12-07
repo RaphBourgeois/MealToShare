@@ -20,6 +20,11 @@ class LocalData{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs;
   }
+
+  Future<SharedPreferences> getGroups() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs;
+  }
 }
 
 
@@ -55,6 +60,19 @@ class Connect{
   void signOut(){
     googleSignIn.signOut();
     print("User signed out");
+  }
+
+  void setGroups(){
+    Map<String,String> data = <String,String>{
+      "name": "Hell Kitchen 2",
+      "location": "Willis Tower",
+      "max:": "5",
+    };
+    
+    //documentReference.get();
+    Firestore.instance.document("mealtoshare.demo/Groups").setData(data).whenComplete((){
+      print("Groups: " + 'Groups');
+    }).catchError((e) => print(e));
   }
 
   void addRestriction(String restriction){

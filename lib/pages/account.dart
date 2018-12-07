@@ -20,7 +20,7 @@ class _AccountState extends State<Account> {
     if(_name == ""){
     localData.getUserPref("name").then(
       (val) => setState(() {
-          _name = val +"was here";
+          _name = val;
 
         })
       );

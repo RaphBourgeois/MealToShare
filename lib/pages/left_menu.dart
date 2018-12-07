@@ -6,9 +6,10 @@ Widget leftMenu(BuildContext context){
     padding: EdgeInsets.zero,
     children: <Widget>[
     leftMenuHeader(),
-    leftMenuItem(context,'Cooking Groups','/dashboard'),
+    leftMenuItem(context,'Dashboard','/dashboard'),
     leftMenuItem(context,'Test Page','/test_page'),
-    leftMenuItem(context,'My Account','/account')
+    leftMenuItem(context,'My Account','/account'),
+    leftMenuItem(context, 'Cooking Circles', '/cooking_circles')
   ],
   ); 
 }

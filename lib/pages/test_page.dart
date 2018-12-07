@@ -38,12 +38,12 @@ class _TestPage extends State<TestPage> {
           },
         ),
         new RaisedButton(
-          child: const Text('Test add data'),
+          child: const Text('Test setGroups()'),
           color: Theme.of(context).accentColor,
           elevation: 4.0,
           splashColor: Colors.blueGrey,
           onPressed: () {
-            _connection.addRestriction("Banana");
+            _connection.setGroups();
           },
         )
       ],)
