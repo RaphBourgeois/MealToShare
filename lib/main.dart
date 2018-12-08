@@ -34,7 +34,7 @@ class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Connect _connection = new Connect();
-    _connection.signIn();
+    _connection.getConnect().signIn();
     return new MyScaffold().displayPage(context, Groups());
   }
 }

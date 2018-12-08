@@ -25,7 +25,8 @@ class _TestPage extends State<TestPage> {
           elevation: 4.0,
           splashColor: Colors.blueGrey,
           onPressed: () {
-            _connection.signIn().then((FirebaseUser user)=>print(user)).catchError((e)=>print(e));
+            //_connection.signIn().then((FirebaseUser user)=>print(user)).catchError((e)=>print(e));
+            _connection.getConnect().signIn();
           },
         ),
         new RaisedButton(
@@ -34,7 +35,7 @@ class _TestPage extends State<TestPage> {
           elevation: 4.0,
           splashColor: Colors.blueGrey,
           onPressed: () {
-            _connection.signOut();
+            _connection.getConnect().signOut();
           },
         ),
         new RaisedButton(
@@ -43,7 +44,7 @@ class _TestPage extends State<TestPage> {
           elevation: 4.0,
           splashColor: Colors.blueGrey,
           onPressed: () {
-            _connection.setGroups();
+            _connection.getConnect().setGroups();
           },
         )
       ],)

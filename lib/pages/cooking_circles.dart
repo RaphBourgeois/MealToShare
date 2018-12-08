@@ -13,6 +13,7 @@ class _GroupsState extends State<Groups> {
   LocalData localData = new LocalData();
   Connect connection = new Connect();
 
+  
   String _name = "";
   _GroupsState() {
     //connection..
@@ -26,7 +27,7 @@ class _GroupsState extends State<Groups> {
       );
     }
   }
-  Widget multiListDisplay(){
+  Widget multiListDisplay(Map<String,Map<String,String>> listsToDisplay){
     final int column =3;
     final int row =10;
 
@@ -35,10 +36,33 @@ class _GroupsState extends State<Groups> {
       List<Widget> list = new List();
       list.add(new Row(children: <Widget>[new Text("Name"),new Text("Location"),new Text("# members"),]));
       int i=0;
-      while(i < row){
-        list.add(new Row(children: <Widget>[new Text("Hell Kitchen",style: Theme.of(context).textTheme.title,),new Text("Willis Tower"),new Text("3/5"),]));
-        i++;
-      }
+      listsToDisplay.forEach(
+        (k,v) => 
+          list.add(new Row(children: 
+          <Widget>[
+            //v.forEach(
+            //  (k2,v2) =>
+              //new Text(v["name"].toString(),style: Theme.of(context).textTheme.title,),
+              new Expanded(child: 
+                new Container(child:
+                  new Column(children: <Widget>[
+                    new Text(v["name"].toString(),style: Theme.of(context).textTheme.title,),
+                    new Text(v["location"].toString(),),
+                  ],)
+                )
+              ),
+              new Text(v["max"].toString() + "/" + v["max"].toString(),style: Theme.of(context).textTheme.title,),
+            //)
+            ]
+            )
+          )
+      );
+      
+
+      //while(i < listsToDisplay.length){
+      //  list.add(new Row(children: <Widget>[new Text("Hell Kitchen-",style: Theme.of(context).textTheme.title,),new Text("Willis Tower"),new Text(i.toString() +"/5"),]));
+      //  i++;
+      //}
       return list;
     }
 
@@ -48,13 +72,13 @@ class _GroupsState extends State<Groups> {
       )
     );
   }
-
+  
   @override
   Widget build(BuildContext context){
     return new Column(//page
       children: <Widget>[
         new Text("You are not part of any group."),
-        multiListDisplay(),
+        multiListDisplay(connection.getConnect().getGroups()),
       ],
     );
   }
